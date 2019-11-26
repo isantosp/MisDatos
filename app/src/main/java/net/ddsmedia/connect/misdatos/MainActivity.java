@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Button mBtnDatos;
+    private Button mBtnDatosOtro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +26,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,
                         DatosActivity.class);
                 startActivity(intent);
-
-
-                Toast.makeText(getApplicationContext(),
-                        "Hola soy el boton Datos",
-                        Toast.LENGTH_LONG).show();
             }
         });
     }
