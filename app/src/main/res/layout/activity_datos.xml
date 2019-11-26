@@ -22,12 +22,12 @@
             android:text="Nombre" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/txtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Nombre"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/textView2"
@@ -36,12 +36,12 @@
             android:text="Correo" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/txtMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Correo electrónico"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/textView3"
@@ -50,24 +50,17 @@
             android:text="Telefono" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/txtTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
-
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword" />
+            android:hint="Teléfono"
+            android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnGuardarDatos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar" />
+            android:text="Guardar Datos" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
