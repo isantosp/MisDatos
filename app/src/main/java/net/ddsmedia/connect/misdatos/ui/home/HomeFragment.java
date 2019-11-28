@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -12,11 +13,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.gson.Gson;
+
 import net.ddsmedia.connect.misdatos.R;
+import net.ddsmedia.connect.misdatos.models.Empleado;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+
+    private Gson gson;
+    private TextView txtRes;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +37,47 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        gson = new Gson();
+        final Empleado empleadoObjeto = new Empleado(1,
+                "Juanito Perez",
+                "Patito");
+
+
+        final String jsonObjeto = "{ id: 4, nombre: \"Jaimito Hernandez\", empresa: \"ACME\" }";
+
+        txtRes = root.findViewById(R.id.txtResultado);
+
+        Button toJsonBtn = root.findViewById(R.id.btn2Json);
+        toJsonBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                claseAJson(empleadoObjeto);
+            }
+        });
+
+        Button fromJsonBtn = root.findViewById(R.id.btnFromJson);
+        fromJsonBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                jsonAClase(jsonObjeto);
+            }
+        });
+
         return root;
+    }
+
+
+    private void claseAJson(Empleado empleado){
+        String resultado = gson.toJson(empleado);
+        txtRes.setText(resultado);
+    }
+
+    private void jsonAClase(String json){
+        Empleado empResult = gson.fromJson(json, Empleado.class);
+        String resultado = "id: "+empResult.getId();
+        resultado += "\nnombre: " + empResult.getNombre();
+        resultado += "\nempresa: "+empResult.getEmpresa();
+        txtRes.setText(resultado);
     }
 }
