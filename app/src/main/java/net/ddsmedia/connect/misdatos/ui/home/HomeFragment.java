@@ -17,6 +17,12 @@ import com.google.gson.Gson;
 
 import net.ddsmedia.connect.misdatos.R;
 import net.ddsmedia.connect.misdatos.models.Empleado;
+import net.ddsmedia.connect.misdatos.utils.Globals;
+import net.ddsmedia.connect.misdatos.utils.ReporteService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -64,7 +70,41 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+        service = Globals.getApi().create(ReporteService.class);
+
+        Button btnLlamada = root.findViewById(R.id.btnLlamada);
+        btnLlamada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getEmpleado(5);
+            }
+        });
+
+
         return root;
+    }
+
+    private ReporteService service;
+    private Call<Empleado> getEmpleadoCall;
+
+    private void getEmpleado(int id){
+        getEmpleadoCall = service.getEmpleadoUnico(id);
+        getEmpleadoCall.enqueue(new Callback<Empleado>() {
+            @Override
+            public void onResponse(Call<Empleado> call, Response<Empleado> response) {
+                if(response.isSuccessful()){
+                    Empleado empResult = response.body();
+                    claseAJson(empResult);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Empleado> call, Throwable t) {
+
+            }
+        });
+
     }
 
 
