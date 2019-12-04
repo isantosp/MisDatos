@@ -1,9 +1,12 @@
 package net.ddsmedia.connect.misdatos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +28,7 @@ public class ReporteActivity extends AppCompatActivity {
     String mNombre, mEmail, mTelefono;
 
     // Variables de los campos de texto
-    EditText txtNombre, txtEmail, txtTelefono, txtReporte;
+    EditText txtNombre, txtEmail, txtTelefono, txtReporte, txtGeo;
 
     private ReporteService service;
 
@@ -45,6 +48,7 @@ public class ReporteActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.rptEmail);
         txtTelefono = findViewById(R.id.rptTelefono);
         txtReporte = findViewById(R.id.rptReporte);
+        txtGeo = findViewById(R.id.rptGeo);
 
         txtNombre.setText(mNombre);
         txtEmail.setText(mEmail);
@@ -59,6 +63,8 @@ public class ReporteActivity extends AppCompatActivity {
                 guardarDatos();
             }
         });
+
+        getPermisos();
     }
 
     private void guardarDatos(){
@@ -87,5 +93,36 @@ public class ReporteActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    private final int PERMISO_USUARIO_LOCALIZACION = 1;
+    private void getPermisos(){
+        if(checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED){
+
+            String[] permisos = {Manifest.permission.ACCESS_COARSE_LOCATION};
+
+            ActivityCompat.requestPermissions(this,
+                    permisos,
+                    PERMISO_USUARIO_LOCALIZACION);
+
+        }else{
+            txtGeo.setText("YA TIENE PERMISO");
+        }
+    }
+
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults){
+        switch (requestCode){
+            case PERMISO_USUARIO_LOCALIZACION:{
+                if(grantResults.length > 0  &&
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    txtGeo.setText("SI DIO PERMISO");
+                }else{
+                    txtGeo.setText("NO DIO PERMISO");
+                }
+            }
+        }
     }
 }

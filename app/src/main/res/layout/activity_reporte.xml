@@ -72,6 +72,18 @@
             android:gravity="start|top"
             android:inputType="textMultiLine" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Geolocalizacion" />
+
+        <EditText
+            android:id="@+id/rptGeo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
         <Button
             android:id="@+id/btnEnviarRpt"
             android:layout_width="match_parent"
