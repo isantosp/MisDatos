@@ -7,11 +7,15 @@ import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import net.ddsmedia.connect.misdatos.models.CallResult;
 import net.ddsmedia.connect.misdatos.utils.Globals;
@@ -31,6 +35,7 @@ public class ReporteActivity extends AppCompatActivity {
     EditText txtNombre, txtEmail, txtTelefono, txtReporte, txtGeo;
 
     private ReporteService service;
+    private FusedLocationProviderClient provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,23 @@ public class ReporteActivity extends AppCompatActivity {
             }
         });
 
+        provider = new FusedLocationProviderClient(this);
         getPermisos();
+
+
+    }
+
+    private void getUbicacion(){
+        provider.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if(location != null){
+                            txtGeo.setText(location.getLatitude()+","+
+                                    location.getLongitude());
+                        }
+                    }
+                });
     }
 
     private void guardarDatos(){
@@ -108,7 +129,8 @@ public class ReporteActivity extends AppCompatActivity {
                     PERMISO_USUARIO_LOCALIZACION);
 
         }else{
-            txtGeo.setText("YA TIENE PERMISO");
+            //txtGeo.setText("YA TIENE PERMISO");
+            getUbicacion();
         }
     }
 
@@ -118,7 +140,8 @@ public class ReporteActivity extends AppCompatActivity {
             case PERMISO_USUARIO_LOCALIZACION:{
                 if(grantResults.length > 0  &&
                         grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    txtGeo.setText("SI DIO PERMISO");
+                    //txtGeo.setText("SI DIO PERMISO");
+                    getUbicacion();
                 }else{
                     txtGeo.setText("NO DIO PERMISO");
                 }
