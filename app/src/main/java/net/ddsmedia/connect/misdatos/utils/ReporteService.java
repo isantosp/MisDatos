@@ -2,6 +2,7 @@ package net.ddsmedia.connect.misdatos.utils;
 
 import net.ddsmedia.connect.misdatos.models.CallResult;
 import net.ddsmedia.connect.misdatos.models.Empleado;
+import net.ddsmedia.connect.misdatos.models.LoginResult;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -26,5 +27,10 @@ public interface ReporteService {
                                     // Agregamos campo geo que recibe y guarda
                                     // en el campo con el mismo nombre el WS
                                     @Field("geo") String geo);
+
+    @FormUrlEncoded
+    @POST("login.php")
+    Call<LoginResult> login(@Field("username") String usuario,
+                            @Field("password") String contrasena);
 
 }
