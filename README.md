@@ -19,6 +19,27 @@ Aplicación de los temas del curso de Android Intermedio en un caso real de una 
 - [ ] ~~**Uso de la cámara**. Activar y autorizar el uso de la cámara para enviar imágenes al servidor~~
 - [ ] **Activities para ~~*Splash*~~ y *Login*** Definir layouts y activities para la app ~~de Bitácora electrónica~~
 
+### Evaluación
+#### Crear Pantalla de Login y enviar datos a WS para verificar inicio de sesion
+1. Crear activity LoginActivity que sea Launcher
+2. Agregar campos usuario, contraseña y botón Iniciar Sesión al Layout
+3. Agregar Clase LoginResult. Propiedades boolean error, String mensaje
+4. Agregar método POST en Interface ReporteService. Parametros String username, password
+5. Inicializar campos y service en activity LoginActivity
+6. Crear función para llamar al método del servicio y asignarlo al click del botón
+7. Mostrar mensaje y si es correcto finalizar activity LoginActivity e iniciar MainActivity
+
+#### Usuarios admitidos
+```
+$arrLogin = array('admin'   => 'admin123',
+                    'user'      => 'password',
+                    'root'      => 'toor',
+                    'qwerty'    => '123456',
+                    'usuario'   => 'contraseña'
+                    );
+```
+
+
 ### Recursos
 - GSON. https://github.com/google/gson
 - Retrofit. https://square.github.io/retrofit/
