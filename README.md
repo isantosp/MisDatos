@@ -12,7 +12,7 @@ Aplicación de los temas del curso de Android Intermedio en un caso real de una 
 - [x] **Assets desde Android Studio**. Creación de iconos para los menús
 - [x] **Clases y objetos JSON con GSON**. Uso de la librería **GSON** para manejo de JSON
 - [x] **Conectar con WebServices con Retrofit**. Configuración de Retrofit para conexión a WS
-- [x] **Envio y recepción de datos a un servidor**. Enviar datos de un formulario y consultar datos en JSON
+- [x] **Envio ~~y recepción~~ de datos a un servidor**. Enviar datos de un formulario ~~y consultar datos en JSON~~
 - [x] **Solicitar permisos al usuario**. Checar si la app tiene permisos con `checkSelfPermission()` y sino solicitarlos con `requestPermissions()`
 - [x] **Uso de GPS**. Activar y autorizar el uso de GPS para conocer la ubicación actual del usuario con el uso de la Api Google Location and Activity Recognition de Google Play Services
 - [ ] **Pantalla de Login**. Realizar una pantalla de login usando todos los temas vistos, llamando al servidor y mostrando la MainActivity si es los datos son correctos
