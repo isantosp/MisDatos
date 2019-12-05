@@ -27,4 +27,4 @@ Aplicación de los temas del curso de Android Intermedio en un caso real de una 
 Instructor   
 **Ing Ivan Santos Pérez**    
 @isantosp    
-*Noviembre 2019*
+*Nov-Dic 2019*
