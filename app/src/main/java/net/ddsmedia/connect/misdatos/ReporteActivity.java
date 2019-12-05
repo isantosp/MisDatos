@@ -77,8 +77,6 @@ public class ReporteActivity extends AppCompatActivity {
         // después de getPermisos()
         provider = new FusedLocationProviderClient(this);
         getPermisos();
-
-
     }
 
     private void getUbicacion(){
@@ -100,7 +98,7 @@ public class ReporteActivity extends AppCompatActivity {
                 txtEmail.getText().toString(),
                 txtTelefono.getText().toString(),
                 txtReporte.getText().toString(),
-                // Agregamo el parametro con lo que tiene txtGeo
+                // Agregamos el parametro con lo que tiene txtGeo
                 txtGeo.getText().toString());
         llamadaGuardar.enqueue(new Callback<CallResult>() {
             @Override
