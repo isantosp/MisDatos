@@ -22,6 +22,9 @@ public interface ReporteService {
     Call<CallResult> agregarReporte(@Field("nombre") String nombre,
                                     @Field("email") String email,
                                     @Field("telefono") String telefono,
-                                    @Field("reporte") String reporte);
+                                    @Field("reporte") String reporte,
+                                    // Agregamos campo geo que recibe y guarda
+                                    // en el campo con el mismo nombre el WS
+                                    @Field("geo") String geo);
 
 }

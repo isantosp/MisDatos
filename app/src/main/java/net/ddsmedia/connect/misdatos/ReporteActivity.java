@@ -69,6 +69,12 @@ public class ReporteActivity extends AppCompatActivity {
             }
         });
 
+        // El problema del martes 3 fue que primero mandabamos a llamar
+        // al método getPermisos() que a su vez manda a llamar si es que
+        // ya tiene o se conceden los permisos se manda a llamar al método
+        // getUbicacion() en donde usamos la variable provider que es la
+        // que no estaba inicializada por que la linea siguiente estaba
+        // después de getPermisos()
         provider = new FusedLocationProviderClient(this);
         getPermisos();
 
@@ -93,7 +99,9 @@ public class ReporteActivity extends AppCompatActivity {
                 txtNombre.getText().toString(),
                 txtEmail.getText().toString(),
                 txtTelefono.getText().toString(),
-                txtReporte.getText().toString());
+                txtReporte.getText().toString(),
+                // Agregamo el parametro con lo que tiene txtGeo
+                txtGeo.getText().toString());
         llamadaGuardar.enqueue(new Callback<CallResult>() {
             @Override
             public void onResponse(Call<CallResult> call, Response<CallResult> response) {
