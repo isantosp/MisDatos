@@ -17,7 +17,7 @@ Aplicación de los temas del curso de Android Intermedio en un caso real de una 
 - [x] **Uso de GPS**. Activar y autorizar el uso de GPS para conocer la ubicación actual del usuario con el uso de la Api Google Location and Activity Recognition de Google Play Services
 - [ ] **Pantalla de Login**. Realizar una pantalla de login usando todos los temas vistos, llamando al servidor y mostrando la MainActivity si es los datos son correctos
 - [ ] ~~**Uso de la cámara**. Activar y autorizar el uso de la cámara para enviar imágenes al servidor~~
-- [ ] ~~**Activities para *Splash* y *Login*** Definir layouts y activities para la app de Bitácora electrónica~~
+- [ ] **Activities para ~~*Splash*~~ y *Login*** Definir layouts y activities para la app ~~de Bitácora electrónica~~
 
 ### Recursos
 - GSON. https://github.com/google/gson
